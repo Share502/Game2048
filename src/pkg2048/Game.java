@@ -13,10 +13,10 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import gui.GuiScreen;
-import gui.LeaderboardsPanel;
-import gui.MainMenuPanel;
-import gui.PlayPanel;
+//import gui.GuiScreen;
+//import gui.LeaderboardsPanel;
+//import gui.MainMenuPanel;
+//import gui.PlayPanel;
 
 public class Game extends JPanel implements Runnable, KeyListener, MouseListener, MouseMotionListener{
 
@@ -29,7 +29,7 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 	private boolean running;
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
-	private GuiScreen screen;
+	//private GuiScreen screen;
 	
 	public Game() {
 		
@@ -39,11 +39,11 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		
-		screen = GuiScreen.getInstance();
-		screen.add("Menu", new MainMenuPanel());
-		screen.add("Play", new PlayPanel());
-		screen.add("Leaderboards", new LeaderboardsPanel());
-		screen.setCurrentPanel("Menu");
+		//screen = GuiScreen.getInstance();
+		//screen.add("Menu", new MainMenuPanel());
+		//screen.add("Play", new PlayPanel());
+		//screen.add("Leaderboards", new LeaderboardsPanel());
+		//screen.setCurrentPanel("Menu");
 	}
 
 	private void update() {
@@ -70,7 +70,7 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 		Graphics2D g = (Graphics2D) image.getGraphics();
 		g.setColor(Color.white);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
-		screen.render(g);
+		//screen.render(g);
 		g.dispose();
 
 		Graphics2D g2d = (Graphics2D) getGraphics();
@@ -165,12 +165,12 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		screen.mousePressed(e);
+		//screen.mousePressed(e);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		screen.mouseReleased(e);
+		//screen.mouseReleased(e);
 	}
 
 	@Override
@@ -183,11 +183,11 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		screen.mouseDragged(e);
+		//screen.mouseDragged(e);
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		screen.mouseMoved(e);
+		//screen.mouseMoved(e);
 	}
 }

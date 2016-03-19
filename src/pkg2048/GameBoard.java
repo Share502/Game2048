@@ -34,9 +34,9 @@ public class GameBoard {
 	private long startTime;
 	private boolean hasStarted;
 
-	private ScoreManager scores;
-	private Leaderboards lBoard;
-	private AudioHandler audio;
+	//private ScoreManager scores;
+	//private Leaderboards lBoard;
+	//private AudioHandler audio;
 	private int saveCount = 0;
 
 	public GameBoard(int x, int y) {
@@ -45,7 +45,7 @@ public class GameBoard {
 		board = new Tile[ROWS][COLS];
 		gameBoard = new BufferedImage(BOARD_WIDTH, BOARD_HEIGHT, BufferedImage.TYPE_INT_RGB);
 		createBoardImage();
-
+/*
 		audio = AudioHandler.getInstance();
 		audio.load("click.wav", "click");
 		audio.load("MainSong.mp3", "BG");
@@ -71,13 +71,13 @@ public class GameBoard {
 			dead = checkDead();
 			// not coalling setWon because we don't want to save the time
 			won = checkWon();
-		}
+		}*/
 	}
 
 	public void reset(){
 		board = new Tile[ROWS][COLS];
 		start();
-		scores.saveGame();
+		//scores.saveGame();
 		dead = false;
 		won = false;
 		hasStarted = false;
@@ -116,13 +116,13 @@ public class GameBoard {
 		saveCount++;
 		if (saveCount >= 120) {
 			saveCount = 0;
-			scores.saveGame();
+			//scores.saveGame();
 		}
 		
 		if (!won && !dead) {
 			if (hasStarted) {
 				elapsedMS = (System.nanoTime() - startTime) / 1000000;
-				scores.setTime(elapsedMS);
+				//scores.setTime(elapsedMS);
 			}
 			else {
 				startTime = System.nanoTime();
@@ -131,9 +131,9 @@ public class GameBoard {
 
 		checkKeys();
 
-		if (scores.getCurrentScore() > scores.getCurrentTopScore()) {
-			scores.setCurrentTopScore(scores.getCurrentScore());
-		}
+		//if (scores.getCurrentScore() > scores.getCurrentTopScore()) {
+		//	scores.setCurrentTopScore(scores.getCurrentScore());
+		//}
 
 		for (int row = 0; row < ROWS; row++) {
 			for (int col = 0; col < COLS; col++) {
@@ -239,16 +239,16 @@ public class GameBoard {
 				board[newRow][newCol] = current;
 				canMove = true;
 				board[newRow - verticalDirection][newCol - horizontalDirection] = null;
-				board[newRow][newCol].setSlideTo(new Point(newRow, newCol));
+				//board[newRow][newCol].setSlideTo(new Point(newRow, newCol));
 			}
 			else if (board[newRow][newCol].getValue() == current.getValue() && board[newRow][newCol].canCombine()) {
 				board[newRow][newCol].setCanCombine(false);
 				board[newRow][newCol].setValue(board[newRow][newCol].getValue() * 2);
 				canMove = true;
 				board[newRow - verticalDirection][newCol - horizontalDirection] = null;
-				board[newRow][newCol].setSlideTo(new Point(newRow, newCol));
+				//board[newRow][newCol].setSlideTo(new Point(newRow, newCol));
 				board[newRow][newCol].setCombineAnimation(true);
-				scores.setCurrentScore(scores.getCurrentScore() + board[newRow][newCol].getValue());
+				//scores.setCurrentScore(scores.getCurrentScore() + board[newRow][newCol].getValue());
 			}
 			else {
 				move = false;
@@ -315,7 +315,7 @@ public class GameBoard {
 		}
 
 		if (canMove) {
-			audio.play("click", 0);
+			//audio.play("click", 0);
 			spawnRandom();
 			setDead(checkDead());
 		}
@@ -423,9 +423,9 @@ public class GameBoard {
 
 	public void setDead(boolean dead) {
 		if(!this.dead && dead){
-			lBoard.addTile(getHighestTileValue());
-			lBoard.addScore(scores.getCurrentScore());
-			lBoard.saveScores();
+			//lBoard.addTile(getHighestTileValue());
+			//lBoard.addScore(scores.getCurrentScore());
+			//lBoard.saveScores();
 		}
 		this.dead = dead;
 	}
@@ -460,13 +460,13 @@ public class GameBoard {
 
 	public void setWon(boolean won) {
 		if(!this.won && won && !dead){ 
-			lBoard.addTime(scores.getTime());
-			lBoard.saveScores();
+			//lBoard.addTime(scores.getTime());
+			//lBoard.saveScores();
 		}
 		this.won = won;
 	}
 	
-	public ScoreManager getScores(){
-		return scores;
-	}
+	//public ScoreManager getScores(){
+		//return scores;
+	//}
 }
