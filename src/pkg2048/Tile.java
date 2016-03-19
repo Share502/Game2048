@@ -23,7 +23,7 @@ public class Tile {
 	private Color background;
 	private Color text;
 	private Font font;
-	//private Point slideTo;
+	private Point slideTo;
 	private int x;
 	private int y;
 
@@ -185,13 +185,13 @@ public class Tile {
 		drawImage();
 	}
 
-	//public Point getSlideTo() {
-		//return slideTo;
-	//}
+	public Point getSlideTo() {
+		return slideTo;
+	}
 
-	//public void setSlideTo(Point slideTo) {
-		//this.slideTo = slideTo;
-	//}
+	public void setSlideTo(Point slideTo) {
+		this.slideTo = slideTo;
+	}
 
 	public int getX() {
 		return x;
@@ -225,4 +225,6 @@ public class Tile {
 	public void setCanCombine(boolean canCombine) {
 		this.canCombine = canCombine;
 	}
+
+    
 }

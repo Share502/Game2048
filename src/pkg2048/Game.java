@@ -13,15 +13,15 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-//import com.fatalcubez.gui.GuiScreen;
-//import com.fatalcubez.gui.LeaderboardsPanel;
-//import com.fatalcubez.gui.MainMenuPanel;
-//import com.fatalcubez.gui.PlayPanel;
+import gui.GuiScreen;
+import gui.LeaderboardsPanel;
+import gui.MainMenuPanel;
+import gui.PlayPanel;
 
 public class Game extends JPanel implements Runnable, KeyListener, MouseListener, MouseMotionListener{
 
 	private static final long serialVersionUID = 1L;
-	//public static final int WIDTH = GameBoard.BOARD_WIDTH + 40;
+	public static final int WIDTH = GameBoard.BOARD_WIDTH + 40;
        
 	public static final int HEIGHT = 630;
 	public static final Font main = new Font("Bebas Neue Regular", Font.PLAIN, 28);
@@ -29,7 +29,7 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 	private boolean running;
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
-	//private GuiScreen screen;
+	private GuiScreen screen;
 	
 	public Game() {
 		
@@ -38,12 +38,12 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 		addKeyListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
-		/*
+		
 		screen = GuiScreen.getInstance();
 		screen.add("Menu", new MainMenuPanel());
 		screen.add("Play", new PlayPanel());
 		screen.add("Leaderboards", new LeaderboardsPanel());
-		screen.setCurrentPanel("Menu");*/
+		screen.setCurrentPanel("Menu");
 	}
 
 	private void update() {
@@ -70,7 +70,7 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 		Graphics2D g = (Graphics2D) image.getGraphics();
 		g.setColor(Color.white);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
-		//screen.render(g);
+		screen.render(g);
 		g.dispose();
 
 		Graphics2D g2d = (Graphics2D) getGraphics();
@@ -165,12 +165,12 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		//screen.mousePressed(e);
+		screen.mousePressed(e);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		//screen.mouseReleased(e);
+		screen.mouseReleased(e);
 	}
 
 	@Override
@@ -183,11 +183,11 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		//screen.mouseDragged(e);
+		screen.mouseDragged(e);
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		//screen.mouseMoved(e);
+		screen.mouseMoved(e);
 	}
 }
