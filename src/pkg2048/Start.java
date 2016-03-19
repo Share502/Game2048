@@ -74,11 +74,9 @@ public class Start extends JPanel {
     boolean needAddTile = false;
     for (int i = 0; i < 4; i++) {
       Tile[] line = getLine(i);
-      Tile[] merged = mergeLine(moveLine(line));
-      setLine(i, merged);
-      if (!needAddTile && !compare(line, merged)) {
+      
         needAddTile = true;
-      }
+     
     }
 
     if (needAddTile) {
@@ -87,21 +85,21 @@ public class Start extends JPanel {
   }
 
   public void right() {
-    myTiles = rotate(180);
+
     left();
-    myTiles = rotate(180);
+
   }
 
   public void up() {
-    myTiles = rotate(270);
+
     left();
-    myTiles = rotate(90);
+    
   }
 
   public void down() {
-    myTiles = rotate(90);
+
     left();
-    myTiles = rotate(270);
+
   }
 
   private Tile tileAt(int x, int y) {
@@ -111,9 +109,7 @@ public class Start extends JPanel {
   private void addTile() {
     List<Tile> list = availableSpace();
     if (!availableSpace().isEmpty()) {
-      //int index = (int) (Math.random() * list.size()) % list.size();
-      //Tile emptyTime = list.get(index);
-      //emptyTime.value = Math.random() < 0.9 ? 2 : 4;
+      
     }
   }
 
@@ -184,23 +180,8 @@ public class Start extends JPanel {
     return newTiles;
   }
 
-  private Tile[] moveLine(Tile[] oldLine) {
-    LinkedList<Tile> l = new LinkedList<Tile>();
-    for (int i = 0; i < 4; i++) {
-      if (!oldLine[i].isEmpty())
-        l.addLast(oldLine[i]);
-    }
-    if (l.size() == 0) {
-      return oldLine;
-    } else {
-      Tile[] newLine = new Tile[4];
-      ensureSize(l, 4);
-      for (int i = 0; i < 4; i++) {
-        newLine[i] = l.removeFirst();
-      }
-      return newLine;
-    }
-  }
+
+  
 
   private Tile[] mergeLine(Tile[] oldLine) {
     LinkedList<Tile> list = new LinkedList<Tile>();
@@ -257,12 +238,11 @@ public class Start extends JPanel {
 
   private void drawTile(Graphics g2, Tile tile, int x, int y) {
     Graphics2D g = ((Graphics2D) g2);
-    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+  
     int value = tile.value;
     int xOffset = offsetCoors(x);
     int yOffset = offsetCoors(y);
-    g.setColor(tile.getBackground());
+    //g.setColor(tile.getBackground());
     g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
     g.setColor(tile.getForeground());
     final int size = value < 100 ? 36 : value < 1000 ? 32 : 24;
@@ -278,24 +258,7 @@ public class Start extends JPanel {
     if (value != 0)
       g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
 
-    if (myWin || myLose) {
-      g.setColor(new Color(255, 255, 255, 30));
-      g.fillRect(0, 0, getWidth(), getHeight());
-      g.setColor(new Color(78, 139, 202));
-      g.setFont(new Font(FONT_NAME, Font.BOLD, 48));
-      if (myWin) {
-        g.drawString("You won!", 68, 150);
-      }
-      if (myLose) {
-        g.drawString("Game over!", 50, 130);
-        g.drawString("You lose!", 64, 200);
-      }
-      if (myWin || myLose) {
-        g.setFont(new Font(FONT_NAME, Font.PLAIN, 16));
-        g.setColor(new Color(128, 128, 128, 128));
-        g.drawString("Press ESC to play again", 80, getHeight() - 40);
-      }
-    }
+  
     g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
     g.drawString("Score: " + myScore, 200, 365);
 
@@ -324,22 +287,6 @@ public class Start extends JPanel {
       return value < 16 ? new Color(0x776e65) :  new Color(0xf9f6f2);
     }
 
-    public Color getBackground() {
-      switch (value) {
-        case 2:    return new Color(0xeee4da);
-        case 4:    return new Color(0xede0c8);
-        case 8:    return new Color(0xf2b179);
-        case 16:   return new Color(0xf59563);
-        case 32:   return new Color(0xf67c5f);
-        case 64:   return new Color(0xf65e3b);
-        case 128:  return new Color(0xedcf72);
-        case 256:  return new Color(0xedcc61);
-        case 512:  return new Color(0xedc850);
-        case 1024: return new Color(0xedc53f);
-        case 2048: return new Color(0xedc22e);
-      }
-      return new Color(0xcdc1b4);
-    }
   }
 
   public static void main(String[] args) {
