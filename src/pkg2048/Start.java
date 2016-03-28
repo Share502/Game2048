@@ -27,9 +27,7 @@ public class Start extends JPanel {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
           resetGame();
         }
-        if (!canMove()) {
-          myLose = true;
-        }
+       
 
         if (!myWin && !myLose) {
           switch (e.getKeyCode()) {
@@ -48,9 +46,7 @@ public class Start extends JPanel {
           }
         }
 
-        if (!myWin && !canMove()) {
-          //myLose = true;
-        }
+        
 
         //repaint();
       }
@@ -127,21 +123,7 @@ public class Start extends JPanel {
     return availableSpace().size() == 0;
   }
 
-  boolean canMove() {
-    if (!isFull()) {
-      return true;
-    }
-    for (int x = 0; x < 4; x++) {
-      for (int y = 0; y < 4; y++) {
-        Tile t = tileAt(x, y);
-        if ((x < 3 && t.value == tileAt(x + 1, y).value)
-          || ((y < 3) && t.value == tileAt(x, y + 1).value)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
+ 
 
   private boolean compare(Tile[] line1, Tile[] line2) {
     if (line1 == line2) {
