@@ -6,13 +6,16 @@ Język programowania: Java
 
 Środowisko programowania: NetBeans
 
+
 1. Początek:	
 
  a.	Stworzenie klasy głównej (class main method)
  
  b.	Stworzenie okna (game class extends JPanel)
 
+
 2. Wykrywanie przycisków 
+
 
 3. Ciało gry :
 
@@ -24,6 +27,7 @@ Język programowania: Java
  
  d.	Animacje
 
+
 4. Tablica gry:
 
   a.	Wstawienie przycisków (strzałek)
@@ -31,18 +35,23 @@ Język programowania: Java
   b.	Wstawienie do klasy gry
 
   c.	Tło tablicy
+  
 
 5.	Tablica gry cd:
 
   a.	Ruch klocków
 
   b.	Ustawienia animacji
+  
 
 6.	Wstawienie punktacji
 
+
 7.	Wstawienie menu po przegraniu gry (ponowna gra)
 
+
 8.	Testy, poprawienie błędów
+
 
 Pomoce:
 
