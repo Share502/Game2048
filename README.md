@@ -1,10 +1,12 @@
 # Game2048
 
 2048 to prosta gra logiczna. Polega na przesuwaniu kwadratów w taki sposób, aby uzyskać pole z tytułową liczbą – 2048. Zaczynamy z dwoma kwadratami o wartości 2, i tak musimy je przesuwać, żeby pola z ta samą wartością się połączyły. Co turę dochodzi pole z liczba 2.
-<p>Język programowania: Java</p>
-<p>Środowisko programowania: NetBeans</p>
 
-1.Początek:	
+Język programowania: Java
+
+Środowisko programowania: NetBeans
+
+1. Początek:	
 
  a.	Stworzenie klasy głównej (class main method)
  
