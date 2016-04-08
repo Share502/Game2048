@@ -5,7 +5,8 @@
 Język programowania: Java
 
 Środowisko programowania: NetBeans
-
+ 
+### Plan gry:
 
 1. Początek:	
 
