@@ -27,7 +27,9 @@ public class Start extends JPanel {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
           resetGame();
         }
-       
+        if (!canMove()) {
+          myLose = true;
+        }
 
         if (!myWin && !myLose) {
           switch (e.getKeyCode()) {
@@ -46,9 +48,11 @@ public class Start extends JPanel {
           }
         }
 
-        
+        if (!myWin && !canMove()) {
+          myLose = true;
+        }
 
-        //repaint();
+        repaint();
       }
     });
     resetGame();
@@ -70,9 +74,11 @@ public class Start extends JPanel {
     boolean needAddTile = false;
     for (int i = 0; i < 4; i++) {
       Tile[] line = getLine(i);
-      
+      Tile[] merged = mergeLine(moveLine(line));
+      setLine(i, merged);
+      if (!needAddTile && !compare(line, merged)) {
         needAddTile = true;
-     
+      }
     }
 
     if (needAddTile) {
@@ -81,21 +87,21 @@ public class Start extends JPanel {
   }
 
   public void right() {
-
+    myTiles = rotate(180);
     left();
-
+    myTiles = rotate(180);
   }
 
   public void up() {
-
+    myTiles = rotate(270);
     left();
-    
+    myTiles = rotate(90);
   }
 
   public void down() {
-
+    myTiles = rotate(90);
     left();
-
+    myTiles = rotate(270);
   }
 
   private Tile tileAt(int x, int y) {
@@ -105,7 +111,9 @@ public class Start extends JPanel {
   private void addTile() {
     List<Tile> list = availableSpace();
     if (!availableSpace().isEmpty()) {
-      
+      int index = (int) (Math.random() * list.size()) % list.size();
+      Tile emptyTime = list.get(index);
+      emptyTime.value = Math.random() < 0.9 ? 2 : 4;
     }
   }
 
@@ -123,7 +131,21 @@ public class Start extends JPanel {
     return availableSpace().size() == 0;
   }
 
- 
+  boolean canMove() {
+    if (!isFull()) {
+      return true;
+    }
+    for (int x = 0; x < 4; x++) {
+      for (int y = 0; y < 4; y++) {
+        Tile t = tileAt(x, y);
+        if ((x < 3 && t.value == tileAt(x + 1, y).value)
+          || ((y < 3) && t.value == tileAt(x, y + 1).value)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 
   private boolean compare(Tile[] line1, Tile[] line2) {
     if (line1 == line2) {
@@ -162,8 +184,23 @@ public class Start extends JPanel {
     return newTiles;
   }
 
-
-  
+  private Tile[] moveLine(Tile[] oldLine) {
+    LinkedList<Tile> l = new LinkedList<Tile>();
+    for (int i = 0; i < 4; i++) {
+      if (!oldLine[i].isEmpty())
+        l.addLast(oldLine[i]);
+    }
+    if (l.size() == 0) {
+      return oldLine;
+    } else {
+      Tile[] newLine = new Tile[4];
+      ensureSize(l, 4);
+      for (int i = 0; i < 4; i++) {
+        newLine[i] = l.removeFirst();
+      }
+      return newLine;
+    }
+  }
 
   private Tile[] mergeLine(Tile[] oldLine) {
     LinkedList<Tile> list = new LinkedList<Tile>();
@@ -220,29 +257,27 @@ public class Start extends JPanel {
 
   private void drawTile(Graphics g2, Tile tile, int x, int y) {
     Graphics2D g = ((Graphics2D) g2);
-  
+    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
     int value = tile.value;
     int xOffset = offsetCoors(x);
     int yOffset = offsetCoors(y);
-    //g.setColor(tile.getBackground());
+    g.setColor(tile.getBackground());
     g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
     g.setColor(tile.getForeground());
-    final int size = value < 100 ? 36 : value < 1000 ? 32 : 24;
-    final Font font = new Font(FONT_NAME, Font.BOLD, size);
-    g.setFont(font);
+   
 
     String s = String.valueOf(value);
-    final FontMetrics fm = getFontMetrics(font);
-
-    final int w = fm.stringWidth(s);
-    final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
+    
 
     if (value != 0)
-      g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
+     
 
-  
+    if (myWin || myLose) {
+     
+    }
     g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
-    g.drawString("Score: " + myScore, 200, 365);
+
 
   }
 
@@ -269,6 +304,14 @@ public class Start extends JPanel {
       return value < 16 ? new Color(0x776e65) :  new Color(0xf9f6f2);
     }
 
+    public Color getBackground() {
+      switch (value) {
+        case 2:    return new Color(0xeee4da);
+        case 4:    return new Color(0xede0c8);
+       
+      }
+      return new Color(0xcdc1b4);
+    }
   }
 
   public static void main(String[] args) {
