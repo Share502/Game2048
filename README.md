@@ -8,17 +8,17 @@ Język programowania: Java
  
 ### Plan gry:
 
-1. Początek:	
+1. Początek - wykonany:	
 
  a.	Stworzenie klasy głównej (class main method)
  
  b.	Stworzenie okna (game class extends JPanel)
 
 
-2. Wykrywanie przycisków 
+2. Wykrywanie przycisków - wykonany
 
 
-3. Ciało gry :
+3. Ciało gry - wykonany:
 
  a.	Tło
  
@@ -29,7 +29,7 @@ Język programowania: Java
  d.	Animacje
 
 
-4. Tablica gry:
+4. Tablica gry - wykonany:
 
   a.	Wstawienie przycisków (strzałek)
 
@@ -38,7 +38,7 @@ Język programowania: Java
   c.	Tło tablicy
   
 
-5.	Tablica gry cd:
+5.	Tablica gry cd - wykonany w 50%:
 
   a.	Ruch klocków
 
