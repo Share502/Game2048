@@ -38,7 +38,7 @@ Język programowania: Java
   c.	Tło tablicy
   
 
-5.	Tablica gry cd - wykonany w 50%:
+5.	Tablica gry cd - wykonany:
 
   a.	Ruch klocków
 
