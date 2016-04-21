@@ -265,19 +265,38 @@ public class Start extends JPanel {
     g.setColor(tile.getBackground());
     g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
     g.setColor(tile.getForeground());
-   
+    final int size = value < 100 ? 36 : value < 1000 ? 32 : 24;
+    final Font font = new Font(FONT_NAME, Font.BOLD, size);
+    g.setFont(font);
 
     String s = String.valueOf(value);
-    
+    final FontMetrics fm = getFontMetrics(font);
+
+    final int w = fm.stringWidth(s);
+    final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
 
     if (value != 0)
-     
+      g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
 
     if (myWin || myLose) {
      
+      
+      
+ 
+      if (myWin) {
+        
+      }
+      if (myLose) {
+   
+      }
+      if (myWin || myLose) {
+        
+        
+       
+      }
     }
     g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
-
+   
 
   }
 
@@ -308,7 +327,15 @@ public class Start extends JPanel {
       switch (value) {
         case 2:    return new Color(0xeee4da);
         case 4:    return new Color(0xede0c8);
-       
+        case 8:    return new Color(0xf2b179);
+        case 16:   return new Color(0xf59563);
+        case 32:   return new Color(0xf67c5f);
+        case 64:   return new Color(0xf65e3b);
+        case 128:  return new Color(0xedcf72);
+        case 256:  return new Color(0xedcc61);
+        case 512:  return new Color(0xedc850);
+        case 1024: return new Color(0xedc53f);
+        case 2048: return new Color(0xedc22e);
       }
       return new Color(0xcdc1b4);
     }
