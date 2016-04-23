@@ -40,9 +40,13 @@ Język programowania: Java
 
 5.	Tablica gry cd - wykonany:
 
-  a.	Ruch klocków
+  a. Stowrzenie klocków
+  
+  b.	Ruch klocków
+  
+  c. Przypisanie kolorów oraz wartości
 
-  b.	Ustawienia animacji
+  d.	Ustawienia animacji
   
 
 6.	Wstawienie punktacji
