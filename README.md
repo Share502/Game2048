@@ -49,7 +49,7 @@ Język programowania: Java
   d.	Ustawienia animacji
   
 
-6.	Wstawienie punktacji
+6.	Wstawienie punktacji - wykonany
 
 
 7.	Wstawienie menu po przegraniu gry (ponowna gra)
