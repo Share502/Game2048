@@ -1,3 +1,5 @@
+
+
 package pkg2048;
 
 import javax.swing.*;
@@ -7,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
 
 public class Start extends JPanel {
   private static final Color BG_COLOR = new Color(0xbbada0);
@@ -25,7 +28,7 @@ public class Start extends JPanel {
       @Override
       public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-          resetGame();
+          
         }
         if (!canMove()) {
           myLose = true;
@@ -279,24 +282,19 @@ public class Start extends JPanel {
       g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
 
     if (myWin || myLose) {
-     
       
-      
- 
       if (myWin) {
         
       }
       if (myLose) {
-   
+        
       }
       if (myWin || myLose) {
         
-        
-       
       }
     }
     g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
-   
+    g.drawString("Score: " + myScore, 200, 365);
 
   }
 

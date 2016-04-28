@@ -41,7 +41,7 @@ public class PlayPanel extends GuiPanel {
 		scoreFont = Game.main.deriveFont(24f);
 		gameOverFont = Game.main.deriveFont(70f);
 		board = new GameBoard(Game.WIDTH / 2 - GameBoard.BOARD_WIDTH / 2, Game.HEIGHT - GameBoard.BOARD_HEIGHT - 20);
-		scores = board.getScores();
+		//scores = board.getScores();
 		info = new BufferedImage(Game.WIDTH, 200, BufferedImage.TYPE_INT_RGB);
 
 		mainMenu = new GuiButton(Game.WIDTH / 2 - largeButtonWidth / 2, 450, largeButtonWidth, buttonHeight);
@@ -54,7 +54,7 @@ public class PlayPanel extends GuiPanel {
 
 		tryAgain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				board.getScores().reset();
+				//board.getScores().reset();
 				board.reset();
 				alpha = 0;
 
