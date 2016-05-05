@@ -1,5 +1,3 @@
-
-
 package pkg2048;
 
 import javax.swing.*;
@@ -9,7 +7,6 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
 
 public class Start extends JPanel {
   private static final Color BG_COLOR = new Color(0xbbada0);
@@ -28,7 +25,7 @@ public class Start extends JPanel {
       @Override
       public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-          
+          resetGame();
         }
         if (!canMove()) {
           myLose = true;
@@ -282,15 +279,21 @@ public class Start extends JPanel {
       g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
 
     if (myWin || myLose) {
-      
+      g.setColor(new Color(255, 255, 255, 30));
+      g.fillRect(0, 0, getWidth(), getHeight());
+      g.setColor(new Color(78, 139, 202));
+      g.setFont(new Font(FONT_NAME, Font.BOLD, 48));
       if (myWin) {
-        
+        g.drawString("You won!", 68, 150);
       }
       if (myLose) {
-        
+        g.drawString("Game over!", 50, 130);
+        g.drawString("You lose!", 64, 200);
       }
       if (myWin || myLose) {
-        
+        g.setFont(new Font(FONT_NAME, Font.PLAIN, 16));
+        g.setColor(new Color(128, 128, 128, 128));
+        g.drawString("Press ESC to play again", 80, getHeight() - 40);
       }
     }
     g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
