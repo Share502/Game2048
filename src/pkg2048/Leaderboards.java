@@ -75,7 +75,7 @@ public class Leaderboards {
 		try {
 			File f = new File(filePath, highScores);
 			if (!f.isFile()) {
-				createSaveData();
+				
 			}
 
 			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
@@ -122,22 +122,7 @@ public class Leaderboards {
 		}
 	}
 
-	private void createSaveData() {
-		try {
-			File file = new File(filePath, highScores);
-
-			FileWriter output = new FileWriter(file);
-			BufferedWriter writer = new BufferedWriter(output);
-			writer.write("0-0-0-0-0");
-			writer.newLine();
-			writer.write("0-0-0-0-0");
-			writer.newLine();
-			writer.write(Integer.MAX_VALUE + "-" + Integer.MAX_VALUE + "-" + Integer.MAX_VALUE + "-" + Integer.MAX_VALUE + "-" + Integer.MAX_VALUE);
-			writer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+	
 	
 	public int getHighScore(){
 		return topScores.get(0);

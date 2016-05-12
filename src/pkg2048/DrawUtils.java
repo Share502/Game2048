@@ -41,25 +41,8 @@ public class DrawUtils {
 		}
 
 		int seconds = (int) (millis / 1000);
-		if (seconds >= 1) {
-			millis -= seconds * 1000;
-			if (seconds < 10) {
-				formattedTime += "0" + seconds + ":";
-			}
-			else {
-				formattedTime += seconds + ":";
-			}
-		}
-
-		if (millis > 99) {
-			formattedTime += millis;
-		}
-		else if (millis > 9) {
-			formattedTime += "0" + millis;
-		}
-		else {
-			formattedTime += "00" + millis;
-		}
+		
+		
 
 		return formattedTime;
 	}

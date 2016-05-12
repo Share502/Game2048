@@ -166,11 +166,5 @@ public class ScoreManager {
 		this.bestTime = bestTime;
 	}
 
-	public boolean newGame() {
-		return newGame;
-	}
-
-	public int[] getBoard() {
-		return board;
-	}
+	
 }

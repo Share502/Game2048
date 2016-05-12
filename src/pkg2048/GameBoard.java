@@ -34,9 +34,7 @@ public class GameBoard {
 	private long startTime;
 	private boolean hasStarted;
 
-	//private ScoreManager scores;
-	//private Leaderboards lBoard;
-	//private AudioHandler audio;
+	
 	private int saveCount = 0;
 
 	public GameBoard(int x, int y) {
@@ -45,33 +43,7 @@ public class GameBoard {
 		board = new Tile[ROWS][COLS];
 		gameBoard = new BufferedImage(BOARD_WIDTH, BOARD_HEIGHT, BufferedImage.TYPE_INT_RGB);
 		createBoardImage();
-/*
-		audio = AudioHandler.getInstance();
-		audio.load("click.wav", "click");
-		audio.load("MainSong.mp3", "BG");
-		audio.adjustVolume("BG", -10);
-		audio.play("BG", Clip.LOOP_CONTINUOUSLY);
 
-		lBoard = Leaderboards.getInstance();
-		lBoard.loadScores();
-		scores = new ScoreManager(this);
-		scores.loadGame();
-		scores.setBestTime(lBoard.getFastestTime());
-		scores.setCurrentTopScore(lBoard.getHighScore());
-		if(scores.newGame()){
-			start();
-			scores.saveGame();
-		}
-		else{
-			for(int i = 0; i < scores.getBoard().length; i++){
-				if(scores.getBoard()[i] == 0) continue;
-				spawn(i / ROWS, i % COLS, scores.getBoard()[i]);
-			}
-			// not calling setDead because we don't want to save anything
-			dead = checkDead();
-			// not coalling setWon because we don't want to save the time
-			won = checkWon();
-		}*/
 	}
 
 	public void reset(){
@@ -92,7 +64,7 @@ public class GameBoard {
 		}
 	}
 
-	/** Debug method */
+
 	private void spawn(int row, int col, int value) {
 		board[row][col] = new Tile(value, getTileX(col), getTileY(row));
 	}
@@ -131,9 +103,6 @@ public class GameBoard {
 
 		checkKeys();
 
-		//if (scores.getCurrentScore() > scores.getCurrentTopScore()) {
-		//	scores.setCurrentTopScore(scores.getCurrentScore());
-		//}
 
 		for (int row = 0; row < ROWS; row++) {
 			for (int col = 0; col < COLS; col++) {
