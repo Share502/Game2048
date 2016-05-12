@@ -55,7 +55,7 @@ Język programowania: Java
 7.	Wstawienie menu po przegraniu gry (ponowna gra) - wykonany
 
 
-8.	Testy, poprawienie błędów
+8.	Testy, poprawienie błędów - wykonany
 
 
 Pomoce:
